@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.4.xsd">
+
+    <changeSet id="1.1" author="monisha">
+        <comment>Initial Table Creation</comment>
+        <createTable tableName="account">
+            <column name="id" autoIncrement="true" type="bigint">
+                <constraints primaryKey="true" primaryKeyName="account_pk"/>
+            </column>
+            <column name="balance" type="decimal">
+                <constraints nullable="false"/>
+            </column>
+            <column name="modified_at" type="timestamp"/>
+        </createTable>
+        <createTable tableName="player">
+            <column name="id" autoIncrement="true" type="bigint">
+                <constraints primaryKey="true" primaryKeyName="player_pk"/>
+            </column>
+            <column name="name" type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="address" type="text">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_at" type="timestamp">
+                <constraints nullable="false"/>
+            </column>
+            <column name="modified_at" type="timestamp"/>
+            <column name="account_id" type="bigint">
+                <constraints foreignKeyName="account_id_fk" referencedTableName="account" referencedColumnNames="id"
+                             nullable="true"/>
+            </column>
+        </createTable>
+        <createTable tableName="transaction">
+            <column name="id" autoIncrement="false" type="bigint">
+                <constraints primaryKey="true" primaryKeyName="transaction_pk"/>
+            </column>
+            <column name="description" type="text">
+                <constraints nullable="false"/>
+            </column>
+            <column name="type" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="amount" type="decimal">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_at" type="timestamp">
+                <constraints nullable="false"/>
+            </column>
+            <column name="player_id" type="bigint">
+                <constraints foreignKeyName="player_id_fk" referencedTableName="player" referencedColumnNames="id"
+                             nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>

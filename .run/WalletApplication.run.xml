@@ -1,0 +1,10 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="WalletApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+    <module name="wallet.main" />
+    <option name="SPRING_BOOT_MAIN_CLASS" value="com.leovegas.wallet.WalletApplication" />
+    <option name="ALTERNATIVE_JRE_PATH" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>
